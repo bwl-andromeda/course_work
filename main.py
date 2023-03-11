@@ -30,7 +30,8 @@ def get_req():
         max_size = 0
 
 
-        for size in photo["sizes"]:
+        for size in tqdm(photo["sizes"]):
+            time.sleep(0.1)
             counter = 9
             if size["height"] > 0:
                 if size["height"] > max_size:
@@ -40,6 +41,7 @@ def get_req():
                 if str_photos.index(size["type"]) < counter:
                     new_dict[file_name] = {'url':size['url'],'type':size['type']}
                     counter = str_photos.index(size["type"])
+        
     
     
     print("Создание папки для фоток.")
